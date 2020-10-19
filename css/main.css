@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+  background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/06/Jungle-HD-Pictures.jpeg);
+}
+
+h1 {
+  font-family: "Ranchers", cursive;
+  font-size: 82px;
+  text-shadow: 4px 4px #fff;
+}
+.deninho {
+  width: 100px;
+  position: relative;
+  --x: 0;
+  --y: 0;
+  --rotateX: 0;
+  --rotate: 0;
+  transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotateX))
+    rotate(var(--rotate));
+  transition: transform 0.2s;
+}
