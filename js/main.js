@@ -45,3 +45,16 @@ const deninho= document.querySelector(".deninho");
         );
       }
       window.addEventListener("keydown", handleKeyDown);
+      window.onload = changeBackground();
+
+      function changeBackground() {
+
+         images = [
+             'url("/img/jungles/deninho-snake.jpg")',
+             'url("/img/jungles/Jungle-HD-Pictures.jpeg")',
+             'url("/img/jungles/selva-abyss.jpg")'
+         ]
+         body = document.getElementsByTagName('body')[0];
+         body.style.background = images[Math.floor((Math.random() * images.length))];
+
+      }
