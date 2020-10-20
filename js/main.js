@@ -1,9 +1,14 @@
 const deninho = document.querySelector(".deninho");
+const php = document.querySelector(".php");
+const speed = 50;
+
 let x = 0;
 let y = 0;
-const speed = 50;
 let flipped = false;
 let rotate = 0;
+
+const moves = ["arrowup", "arrowdown", "arrowleft", "arrowright"];
+
 function handleKeyDown(event) {
   // if its not an arrow key, we dont care
   if (!event.key.includes("Arrow")) {
@@ -43,12 +48,9 @@ function handleKeyDown(event) {
       `
   );
 }
+
 window.addEventListener("keydown", handleKeyDown);
 window.onload = changeBackground();
-
-const php = document.querySelector(".php");
-
-const moves = ["arrowup", "arrowdown", "arrowleft", "arrowright"];
 
 function movePHP() {
   let move = moves[Math.floor(Math.random() * moves.length)];
@@ -109,9 +111,9 @@ setInterval(checkColission, 500);
 
 function changeBackground() {
   images = [
-    'url("/img/jungles/deninho-snake.jpg")',
-    'url("/img/jungles/Jungle-HD-Pictures.jpeg")',
-    'url("/img/jungles/selva-abyss.jpg")',
+    `url("${BASE_URL}/img/jungles/deninho-snake.jpg")`,
+    `url("${BASE_URL}/img/jungles/Jungle-HD-Pictures.jpeg")`,
+    `url("${BASE_URL}/img/jungles/selva-abyss.jpg")`,
   ];
   body = document.getElementsByTagName("body")[0];
   body.style.background = images[Math.floor(Math.random() * images.length)];
