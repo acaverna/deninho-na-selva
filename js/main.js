@@ -1,5 +1,4 @@
-
-const deninho= document.querySelector(".deninho");
+const deninho = document.querySelector(".deninho");
       let x = 0;
       let y = 0;
       const speed = 50;
@@ -46,6 +45,67 @@ const deninho= document.querySelector(".deninho");
       }
       window.addEventListener("keydown", handleKeyDown);
       window.onload = changeBackground();
+
+const php = document.querySelector(".php");
+
+const moves = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright']
+
+      function movePHP() {
+
+        let move = moves[Math.floor(Math.random() * moves.length)]; 
+     
+
+        // if its not an arrow key, we dont care
+        switch (move) {
+          case "arrowup":
+            y = y - 1;
+            rotate = -90;
+            break;
+          case "arrowdown":
+            y = y + 1;
+            rotate = 90;
+            break;
+          case "arrowleft":
+            x = x - 1;
+            rotate = 0;
+            flipped = true;
+            break;
+          case "arrowright":
+            x = x + 1;
+            rotate = 0;
+            flipped = false;
+            break;
+          default:
+            console.log("that is not a valid move");
+            break;
+        }
+
+        php.setAttribute(
+          "style",
+          `
+        --rotatex: ${flipped ? "180deg" : "0"};
+        --x: ${x * 35}px;
+        --y: ${y * 35}px;
+        --rotate: ${rotate}deg;
+      `
+        );
+      }
+
+      function checkColission(){
+            let phpPos = php.getBoundingClientRect()
+            let DeninhoPos = deninho.getBoundingClientRect()
+
+            if (phpPos.x < DeninhoPos.x + DeninhoPos.width &&
+               phpPos.x + phpPos.width > DeninhoPos.x &&
+               phpPos.y < DeninhoPos.y + DeninhoPos.height &&
+               phpPos.y + phpPos.height > DeninhoPos.y) {
+                  alert('O PHP Pegou você!')
+                  location.reload()
+            }
+      }
+
+      setInterval(movePHP, 1000)
+      setInterval(checkColission, 500)
 
       function changeBackground() {
 
