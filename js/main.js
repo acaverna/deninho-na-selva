@@ -162,9 +162,9 @@ setInterval(checkPoint, 200);
 
 function changeBackground() {
   images = [
-    `url("${BASE_URL}/img/jungles/deninho-snake.jpg")`,
-    `url("${BASE_URL}/img/jungles/Jungle-HD-Pictures.jpeg")`,
-    `url("${BASE_URL}/img/jungles/selva-abyss.jpg")`,
+    "url('../img/jungles/deninho-snake.jpg')",
+    "url('../img/jungles/Jungle-HD-Pictures.jpeg')",
+    "url('../img/jungles/selva-abyss.jpg')",
   ];
   body = document.getElementsByTagName("body")[0];
   body.style.background = images[Math.floor(Math.random() * images.length)];
