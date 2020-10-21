@@ -2,10 +2,10 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const deninho = document.querySelector('.deninho');
-const php = document.querySelector('.php');
+const deninho = document.querySelector(".deninho");
+const php = document.querySelector(".php");
 
-const moves = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright'];
+const moves = ["arrowup", "arrowdown", "arrowleft", "arrowright"];
 var totalRam = 0;
 
 let x = 0;
@@ -15,44 +15,44 @@ let flipped = false;
 let rotate = 0;
 function handleKeyDown(event) {
   // if its not an arrow key, we dont care
-  if (!event.key.includes('Arrow')) {
+  if (!event.key.includes("Arrow")) {
     return;
   }
   switch (event.key) {
-    case 'ArrowUp':
+    case "ArrowUp":
       y = y - 1;
       rotate = -90;
       break;
-    case 'ArrowDown':
+    case "ArrowDown":
       y = y + 1;
       rotate = 90;
       break;
-    case 'ArrowLeft':
+    case "ArrowLeft":
       x = x - 1;
       rotate = 0;
       flipped = true;
       break;
-    case 'ArrowRight':
+    case "ArrowRight":
       x = x + 1;
       rotate = 0;
       flipped = false;
       break;
     default:
-      console.log('That is not a valid move');
+      console.log("That is not a valid move");
       break;
   }
 
   deninho.setAttribute(
-    'style',
+    "style",
     `
-        --rotateX: ${flipped ? '180deg' : '0'};
+        --rotateX: ${flipped ? "180deg" : "0"};
         --x: ${x * speed}px;
         --y: ${y * speed}px;
         --rotate: ${rotate}deg;
-      `,
+      `
   );
 }
-window.addEventListener('keydown', handleKeyDown);
+window.addEventListener("keydown", handleKeyDown);
 window.onload = changeBackground();
 
 function movePHP() {
@@ -66,37 +66,37 @@ function movePHP() {
 
   // if its not an arrow key, we dont care
   switch (move) {
-    case 'arrowup':
+    case "arrowup":
       yPHP = yPHP - 1;
       rotatePHP = -90;
       break;
-    case 'arrowdown':
+    case "arrowdown":
       yPHP = yPHP + 1;
       rotatePHP = 90;
       break;
-    case 'arrowleft':
+    case "arrowleft":
       xPHP = xPHP - 1;
       rotatePHP = 0;
       flippedPHP = true;
       break;
-    case 'arrowright':
+    case "arrowright":
       xPHP = xPHP + 1;
       rotatePHP = 0;
       flippedPHP = false;
       break;
     default:
-      console.log('that is not a valid move');
+      console.log("that is not a valid move");
       break;
   }
 
   php.setAttribute(
-    'style',
+    "style",
     `
-        --rotatex: ${flippedPHP ? '180deg' : '0'};
+        --rotatex: ${flippedPHP ? "180deg" : "0"};
         --x: ${xPHP * speedPHP}px;
         --y: ${yPHP * speedPHP}px;
         --rotate: ${rotatePHP}deg;
-      `,
+      `
   );
 }
 
@@ -110,7 +110,7 @@ function checkColission() {
     phpPos.y < DeninhoPos.y + DeninhoPos.height &&
     phpPos.y + phpPos.height > DeninhoPos.y
   ) {
-    alert('O PHP Pegou você!');
+    alert("O PHP Pegou você!");
     location.reload();
   }
 }
@@ -119,20 +119,20 @@ function generatePoint() {
   let x = randomIntFromInterval(-200, 500);
   let y = randomIntFromInterval(-250, 300);
 
-  let ram = document.createElement('img');
-  ram.src = '../img/ram.png';
-  ram.className = 'item ram';
+  let ram = document.createElement("img");
+  ram.src = "../img/ram.png";
+  ram.className = "item ram";
   totalRam++;
 
   ram.style = `--x: ${x}px;
      --y: ${y}px`;
 
-  document.getElementsByTagName('body')[0].appendChild(ram);
+  document.getElementsByTagName("body")[0].appendChild(ram);
 }
 
 function checkPoint() {
-  let points = document.getElementsByClassName('ram');
-  let counter = document.querySelector('.counterNumber');
+  let points = document.getElementsByClassName("ram");
+  let counter = document.querySelector(".counterNumber");
 
   for (i = 0; i < points.length; i++) {
     let ram = points[i];
@@ -163,6 +163,6 @@ function changeBackground() {
     `url("${BASE_URL}/img/jungles/Jungle-HD-Pictures.jpeg")`,
     `url("${BASE_URL}/img/jungles/selva-abyss.jpg")`,
   ];
-  body = document.getElementsByTagName('body')[0];
+  body = document.getElementsByTagName("body")[0];
   body.style.background = images[Math.floor(Math.random() * images.length)];
 }
