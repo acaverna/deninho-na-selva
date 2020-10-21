@@ -123,7 +123,7 @@ function generatePoint() {
   let y = randomIntFromInterval(-250, 300);
 
   let ram = document.createElement("img");
-  ram.src = "../img/ram.png";
+  ram.src = "/img/ram.png";
   ram.className = "item ram";
   totalRam++;
 
@@ -162,9 +162,9 @@ setInterval(checkPoint, 200);
 
 function changeBackground() {
   images = [
-    "url('../img/jungles/deninho-snake.jpg')",
-    "url('../img/jungles/Jungle-HD-Pictures.jpeg')",
-    "url('../img/jungles/selva-abyss.jpg')",
+    "url('/img/jungles/deninho-snake.jpg')",
+    "url('/img/jungles/Jungle-HD-Pictures.jpeg')",
+    "url('/img/jungles/selva-abyss.jpg')",
   ];
   body = document.getElementsByTagName("body")[0];
   body.style.background = images[Math.floor(Math.random() * images.length)];
